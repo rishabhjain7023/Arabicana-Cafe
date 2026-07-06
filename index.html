@@ -1,0 +1,2558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabicana Cafe | Brewed for Conversations</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-black: #0b0b0a;
+            --bg-panel: #151412;
+            --bg-panel-2: #1d1b18;
+            --line: #2c2a26;
+            --gold: #c8a24a;
+            --gold-soft: #e9d6a3;
+            --cream: #f4ede0;
+            --grey-txt: #a7a49c;
+            --radius: 14px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-black);
+            color: var(--cream);
+            font-family: 'Jost', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: .3px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: .72rem;
+            color: var(--gold);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .eyebrow::before,
+        .eyebrow::after {
+            content: "";
+            width: 24px;
+            height: 1px;
+            background: var(--gold);
+            opacity: .6;
+        }
+
+        .section-head {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .section-head h2 {
+            font-size: 2.6rem;
+            color: var(--cream);
+            margin-top: 10px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 30px;
+            border-radius: 999px;
+            font-size: .85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 500;
+            cursor: pointer;
+            transition: .25s ease;
+            border: 1px solid transparent;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: #141210;
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-soft);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(244, 237, 224, .35);
+            color: var(--cream);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        /* ===== NAV ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(11, 11, 10, .75);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, .06);
+        }
+
+        .nav-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 32px;
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand img {
+            height: 44px;
+            width: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #000;
+        }
+
+        .brand-text {
+            line-height: 1.05;
+        }
+
+        .brand-text .name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            color: var(--cream);
+        }
+
+        .brand-text .tag {
+            font-size: .6rem;
+            letter-spacing: 3px;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 36px;
+        }
+
+        nav a {
+            font-size: .82rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--grey-txt);
+            position: relative;
+            padding-bottom: 4px;
+            transition: .2s;
+        }
+
+        nav a.active,
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        nav a.active::after {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .burger span {
+            width: 24px;
+            height: 2px;
+            background: var(--cream);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 110px;
+            padding-bottom: 40px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(11, 11, 10, .97) 15%, rgba(11, 11, 10, .75) 45%, rgba(11, 11, 10, .35) 75%, rgba(11, 11, 10, .55) 100%);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .hero-content {
+            max-width: 620px;
+        }
+
+        .hero-content .eyebrow {
+            justify-content: flex-start;
+        }
+
+        .hero-content .eyebrow::after {
+            display: none;
+        }
+
+        .hero-content h1 {
+            font-size: 3.6rem;
+            line-height: 1.12;
+            margin: 18px 0 22px;
+            color: var(--cream);
+        }
+
+        .hero-content h1 .accent {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .hero-content p {
+            color: var(--grey-txt);
+            font-size: 1.02rem;
+            line-height: 1.7;
+            max-width: 480px;
+            margin-bottom: 34px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 56px;
+            flex-wrap: wrap;
+        }
+
+        .feature-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, .02);
+            backdrop-filter: blur(6px);
+            overflow: hidden;
+        }
+
+        .feature-strip .f-item {
+            padding: 20px 22px;
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            border-right: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .feature-strip .f-item:last-child {
+            border-right: none;
+        }
+
+        .f-item .ic {
+            width: 38px;
+            height: 38px;
+            flex: none;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .f-item .txt strong {
+            display: block;
+            font-size: .85rem;
+            color: var(--cream);
+            font-weight: 500;
+        }
+
+        .f-item .txt span {
+            font-size: .72rem;
+            color: var(--grey-txt);
+        }
+
+        /* ===== GENERIC SECTION ===== */
+        section {
+            padding: 110px 0;
+        }
+
+        .section-alt {
+            background: var(--bg-panel);
+        }
+
+        /* ===== ABOUT ===== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-photo {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            background: linear-gradient(160deg, #2a2620, #141210);
+            border: 1px solid rgba(255, 255, 255, .08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-photo::before {
+            display: none;
+        }
+
+        .about-photo .badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(11, 11, 10, .75);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: 12px;
+            padding: 16px 18px;
+        }
+
+        .about-photo .badge strong {
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            display: block;
+        }
+
+        .about-photo .badge span {
+            font-size: .75rem;
+            color: var(--grey-txt);
+            letter-spacing: 1px;
+        }
+
+        .about-text .eyebrow {
+            justify-content: flex-start;
+        }
+
+        .about-text .eyebrow::after {
+            display: none;
+        }
+
+        .about-text h2 {
+            font-size: 2.4rem;
+            margin: 14px 0 20px;
+        }
+
+        .about-text p {
+            color: var(--grey-txt);
+            line-height: 1.8;
+            margin-bottom: 18px;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 36px;
+            margin-top: 30px;
+        }
+
+        .about-stats div strong {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+        }
+
+        .about-stats div span {
+            font-size: .75rem;
+            color: var(--grey-txt);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ===== MENU ===== */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 50px;
+        }
+
+        .menu-tab {
+            padding: 10px 24px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, .12);
+            font-size: .82rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--grey-txt);
+            cursor: pointer;
+            transition: .2s;
+            background: transparent;
+        }
+
+        .menu-tab.active,
+        .menu-tab:hover {
+            background: var(--gold);
+            color: #141210;
+            border-color: var(--gold);
+        }
+
+        .slider-wrap {
+            position: relative;
+        }
+
+        .menu-panel {
+            display: none;
+        }
+
+        .menu-panel.active {
+            display: block;
+        }
+
+        .slider-track {
+            display: flex;
+            gap: 22px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 6px 6px 26px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold) transparent;
+        }
+
+        .slider-track::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .slider-track::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 6px;
+        }
+
+        .menu-card {
+            flex: 0 0 240px;
+            background: var(--bg-panel-2);
+            border: 1px solid rgba(255, 255, 255, .07);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: .25s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold);
+        }
+
+        .menu-card .thumb {
+            height: 150px;
+            background: linear-gradient(150deg, #26221c, #151412);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: rgba(200, 162, 74, .5);
+        }
+
+        .menu-card .thumb img,
+        .fav-card .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .menu-card .info {
+            padding: 16px 18px 20px;
+        }
+
+        .menu-card .info h4 {
+            font-size: 1.15rem;
+            color: var(--cream);
+            margin-bottom: 6px;
+        }
+
+        .menu-card .info .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .menu-card .price {
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+        }
+
+        .menu-card .rating {
+            font-size: .75rem;
+            color: var(--grey-txt);
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin-top: 6px;
+        }
+
+        .slider-nav button {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, .15);
+            background: transparent;
+            color: var(--cream);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: .2s;
+        }
+
+        .slider-nav button:hover {
+            background: var(--gold);
+            color: #141210;
+            border-color: var(--gold);
+        }
+
+        /* ===== FAVOURITES ===== */
+        .fav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        .fav-card {
+            background: var(--bg-panel);
+            border: 1px solid rgba(255, 255, 255, .07);
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .fav-card .thumb {
+            height: 170px;
+            background: linear-gradient(150deg, #2a2620, #141210);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.4rem;
+            color: rgba(200, 162, 74, .5);
+        }
+
+        .fav-card .ribbon {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--gold);
+            color: #141210;
+            font-size: .65rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 999px;
+        }
+
+        .fav-card .info {
+            padding: 16px 18px 20px;
+        }
+
+        .fav-card h4 {
+            font-size: 1.1rem;
+            color: var(--cream);
+        }
+
+        .fav-card .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 170px;
+            gap: 16px;
+        }
+
+        .gallery-grid .g-item {
+            border-radius: var(--radius);
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(150deg, #221f1a, #121110);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(200, 162, 74, .4);
+            font-size: 1.8rem;
+            border: 1px solid rgba(255, 255, 255, .06);
+        }
+
+        .gallery-grid .g-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-grid .g-item.tall {
+            grid-row: span 2;
+        }
+
+        .gallery-grid .g-item.wide {
+            grid-column: span 2;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 60px;
+        }
+
+        .contact-info h2 {
+            font-size: 2.4rem;
+            margin: 14px 0 22px;
+        }
+
+        .contact-info>p {
+            color: var(--grey-txt);
+            line-height: 1.8;
+            margin-bottom: 34px;
+            max-width: 460px;
+        }
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            margin-bottom: 34px;
+        }
+
+        .info-list li {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .info-list .ic {
+            width: 44px;
+            height: 44px;
+            flex: none;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .info-list strong {
+            display: block;
+            color: var(--cream);
+            font-size: .95rem;
+            margin-bottom: 3px;
+        }
+
+        .info-list span,
+        .info-list a {
+            color: var(--grey-txt);
+            font-size: .88rem;
+        }
+
+        .socials {
+            display: flex;
+            gap: 14px;
+        }
+
+        .socials a {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, .15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--cream);
+            transition: .2s;
+        }
+
+        .socials a:hover {
+            background: var(--gold);
+            color: #141210;
+            border-color: var(--gold);
+        }
+
+        .map-box {
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, .08);
+            min-height: 400px;
+        }
+
+        .map-box iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            border: 0;
+            filter: grayscale(1) invert(.92) contrast(.9);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, .07);
+            padding: 34px 0;
+        }
+
+        .footer-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .footer-wrap p {
+            color: var(--grey-txt);
+            font-size: .82rem;
+        }
+
+        .footer-wrap .brand-text .name {
+            font-size: 1.1rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media(max-width:900px) {
+            nav {
+                display: none;
+            }
+
+            .burger {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.6rem;
+            }
+
+            .feature-strip {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .feature-strip .f-item:nth-child(2) {
+                border-right: none;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid .g-item.wide {
+                grid-column: span 2;
+            }
+        }
+
+        @media(max-width:520px) {
+            .hero-content h1 {
+                font-size: 2.1rem;
+            }
+
+            .container {
+                padding: 0 20px;
+            }
+
+            .feature-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-strip .f-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, .08);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="nav-wrap">
+            <a href="#home" class="brand">
+                <img src="assets/logo.png" alt="Arabicana Cafe Logo">
+                <div class="brand-text">
+                    <div class="name">Arabicana</div>
+                    <div class="tag">Cafe</div>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#favourites">Favourites</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-cta">
+                <a href="#contact" class="btn btn-outline" style="padding:10px 22px;">Reserve Table</a>
+                <div class="burger" onclick="document.querySelector('nav').classList.toggle('mobile-open')">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="hero-bg"><img src="assets/home.jpeg" alt="Arabicana Cafe Interior"></div>
+        <div class="hero-inner container">
+            <div class="hero-content">
+                <div class="eyebrow">Arabicana Cafe · Jaipur</div>
+                <h1>Brewed for Conversations.<br><span class="accent">Crafted</span> for Memories.</h1>
+                <p>Handcrafted coffee, authentic Italian cuisine and unforgettable moments — served in a warm, elegant
+                    atmosphere made for slowing down.</p>
+                <div class="hero-ctas">
+                    <a href="#menu" class="btn btn-gold">Explore Menu →</a>
+                    <a href="#contact" class="btn btn-outline">Reserve Table</a>
+                </div>
+            </div>
+            <div class="feature-strip">
+                <div class="f-item">
+                    <div class="ic">☕</div>
+                    <div class="txt"><strong>Premium Coffee</strong><span>Finest quality beans</span></div>
+                </div>
+                <div class="f-item">
+                    <div class="ic">🍝</div>
+                    <div class="txt"><strong>Italian Cuisine</strong><span>Authentic & delicious</span></div>
+                </div>
+                <div class="f-item">
+                    <div class="ic">🛋️</div>
+                    <div class="txt"><strong>Cozy Ambience</strong><span>Warm & welcoming</span></div>
+                </div>
+                <div class="f-item">
+                    <div class="ic">📸</div>
+                    <div class="txt"><strong>Instagram Worthy</strong><span>Picture perfect place</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+        <div class="container about-grid">
+            <div class="about-photo">
+                <img src="assets/about.png" alt="About Arabicana Cafe" style="position:absolute; width:100%; height:100%; object-fit:cover; top:0; left:0; z-index:0;">
+                <div class="badge" style="z-index:1;"><strong>Since 2023</strong><span>ROASTED · BREWED · SHARED</span></div>
+            </div>
+            <div class="about-text">
+                <div class="eyebrow">Our Story</div>
+                <h2>A cafe built around the ritual of coffee</h2>
+                <p>Arabicana Cafe was born from a simple idea — that a good cup of coffee can turn a rushed morning into
+                    a moment worth pausing for. Every bean is chosen with care, every dish is made fresh, and every
+                    table is set for real conversation.</p>
+                <p>From our signature Café Mocha to hand-tossed Italian classics, we bring together flavour, warmth and
+                    design so every visit feels like it was made just for you.</p>
+                <div class="about-stats">
+                    <div><strong>3+</strong><span>Years Brewing</span></div>
+                    <div><strong>40+</strong><span>Menu Items</span></div>
+                    <div><strong>4.8</strong><span>Average Rating</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===== MENU ===== -->
+    <section class="section-alt" id="menu">
+        <div class="container">
+            <div class="section-head">
+                <div class="eyebrow">What We Serve</div>
+                <h2>Our Menu</h2>
+            </div>
+
+            <div class="menu-tabs">
+                <button class="menu-tab active" data-tab="coffee">Hot Coffee</button>
+                <button class="menu-tab" data-tab="iced">Iced Coffee</button>
+                <button class="menu-tab" data-tab="frappe">Frappe &amp; Matcha</button>
+                <button class="menu-tab" data-tab="beverages">Beverages</button>
+                <button class="menu-tab" data-tab="pizza">Pizza</button>
+                <button class="menu-tab" data-tab="pasta">Pasta</button>
+                <button class="menu-tab" data-tab="chinese">Chinese</button>
+                <button class="menu-tab" data-tab="indian">Indian</button>
+                <button class="menu-tab" data-tab="snacks">Snacks &amp; Bites</button>
+                <button class="menu-tab" data-tab="desserts">Desserts</button>
+            </div>
+
+            <div class="slider-wrap">
+
+                <!-- HOT COFFEE -->
+                <div class="menu-panel active" id="panel-coffee">
+                    <div class="slider-track" id="track-coffee">
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=400&q=80"
+                                    alt="Americano" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Americano</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=400&q=80"
+                                    alt="Cappuccino" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Cappuccino</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1570968915860-54d5c301fc9f?auto=format&fit=crop&w=400&q=80"
+                                    alt="Café Latte" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Café Latte</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=400&q=80"
+                                    alt="Hot Mocha" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Hot Mocha</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=400&q=80"
+                                    alt="Flat White" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Flat White</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=400&q=80"
+                                    alt="House Of Cappuccino" loading="lazy"></div>
+                            <div class="info">
+                                <h4>House Of Cappuccino</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1510972527409-cef7e2b76b2b?auto=format&fit=crop&w=400&q=80"
+                                    alt="Espresso Single" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Espresso Shot Single</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1510972527409-cef7e2b76b2b?auto=format&fit=crop&w=400&q=80"
+                                    alt="Espresso Double" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Espresso Double</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1594911774802-8822a7079db1?auto=format&fit=crop&w=400&q=80"
+                                    alt="Affogato" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Affogato</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1594911774802-8822a7079db1?auto=format&fit=crop&w=400&q=80"
+                                    alt="Nutella Affogato" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Nutella Affogato</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-nav"><button onclick="scrollSlider('track-coffee',-1)">←</button><button
+                            onclick="scrollSlider('track-coffee',1)">→</button></div>
+                </div>
+
+                <!-- ICED COFFEE -->
+                <div class="menu-panel" id="panel-iced">
+                    <div class="slider-track" id="track-iced">
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80"
+                                    alt="Iced Americano" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Iced Americano</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=400&q=80"
+                                    alt="Iced Cappuccino" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Iced Cappuccino</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1530373030535-f3dfc39f6022?auto=format&fit=crop&w=400&q=80"
+                                    alt="Iced Mocha" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Iced Mocha</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1553909489-cd47e0907980?auto=format&fit=crop&w=400&q=80"
+                                    alt="Condensed Iced Latte" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Condensed Iced Latte</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=400&q=80"
+                                    alt="Classic Iced Café" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Classic Iced Café</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80"
+                                    alt="Iced Café Latte Flavoured" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Iced Café Latte Flavoured</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+                                    alt="Espresso Tonic" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Espresso Tonic</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80"
+                                    alt="Espresso Cranberry" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Espresso Cranberry</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-nav"><button onclick="scrollSlider('track-iced',-1)">←</button><button
+                            onclick="scrollSlider('track-iced',1)">→</button></div>
+                </div>
+
+                <!-- FRAPPE & MATCHA -->
+                <div class="menu-panel" id="panel-frappe">
+                    <div class="slider-track" id="track-frappe">
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80"
+                                    alt="Classic Frappe" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Classic Frappe</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80"
+                                    alt="Choco Frappe" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Choco Frappe</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80"
+                                    alt="Mocha Frappe" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Mocha Frappe</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80"
+                                    alt="Nutella Frappe" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Nutella Frappe</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80"
+                                    alt="Biscoff Frappe" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Biscoff Frappe</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80"
+                                    alt="Brownie Frappe" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Brownie Frappe</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80"
+                                    alt="Dark Chocolate Frappe" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Dark Chocolate Frappe</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80"
+                                    alt="Caramel Creamy Frappe" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Caramel Creamy Frappe</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80"
+                                    alt="Double Choco Chip Frappe" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Double Choco Chip Frappe</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80"
+                                    alt="Irish Frappe" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Irish Frappe</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80"
+                                    alt="Nutty Milano Frappe" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Nutty Milano Frappe</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=400&q=80"
+                                    alt="Classic Matcha" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Classic Matcha</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=400&q=80"
+                                    alt="Strawberry Matcha" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Strawberry Matcha</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=400&q=80"
+                                    alt="Mango Matcha" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Mango Matcha</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=400&q=80"
+                                    alt="Matcha Cappuccino" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Matcha Cappuccino</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-nav"><button onclick="scrollSlider('track-frappe',-1)">←</button><button
+                            onclick="scrollSlider('track-frappe',1)">→</button></div>
+                </div>
+
+                <!-- BEVERAGES -->
+                <div class="menu-panel" id="panel-beverages">
+                    <div class="slider-track" id="track-beverages">
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=400&q=80"
+                                    alt="Virgin Mojito" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Virgin Mojito ⭐</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=400&q=80"
+                                    alt="Cranberry Mojito" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Cranberry Mojito</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=400&q=80"
+                                    alt="Strawberry Mojito" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Strawberry Mojito</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=400&q=80"
+                                    alt="Blueberry Mojito" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Blueberry Mojito</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=400&q=80"
+                                    alt="Watermelon Mojito" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Watermelon Mojito</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=400&q=80"
+                                    alt="Blueberry Ice Tea" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Blueberry Ice Tea</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=400&q=80"
+                                    alt="Lemon Ice Tea" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Lemon Ice Tea</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=400&q=80"
+                                    alt="Lemon Mint Ice Tea" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Lemon Mint Ice Tea</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=400&q=80"
+                                    alt="Peach Ice Tea" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Peach Ice Tea</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=400&q=80"
+                                    alt="Strawberry Ice Tea" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Strawberry Ice Tea</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=400&q=80"
+                                    alt="Watermelon Ice Tea" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Watermelon Ice Tea</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=400&q=80"
+                                    alt="Classic Hot Chocolate" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Classic Hot Chocolate</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=400&q=80"
+                                    alt="Iced Cold Chocolate" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Iced Cold Chocolate</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=400&q=80"
+                                    alt="Ferrero Rocher Hot Choco" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Ferrero Rocher Hot Choco</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=400&q=80"
+                                    alt="Nutella Hot Chocolate" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Nutella Hot Chocolate</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80"
+                                    alt="Belgian Chocolate Shake" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Belgian Chocolate Shake</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80"
+                                    alt="Oreo Thick Shake" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Oreo Thick Shake</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80"
+                                    alt="Nutella Thick Shake" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Nutella Thick Shake</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80"
+                                    alt="Biscoff Thick Shake" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Biscoff Thick Shake</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80"
+                                    alt="Ferrero Rocher Shake" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Ferrero Rocher Shake</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80"
+                                    alt="Kit Kat Thick Shake" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Kit Kat Thick Shake</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80"
+                                    alt="Double Brownie Shake" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Double Brownie Shake</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80"
+                                    alt="Alphonso Mango Shake" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Alphonso Mango Shake</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&w=400&q=80"
+                                    alt="Fresh Lime Soda" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Fresh Lime Soda</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1622543953490-0b70039a4ac5?auto=format&fit=crop&w=400&q=80"
+                                    alt="Red Bull" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Red Bull</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-nav"><button onclick="scrollSlider('track-beverages',-1)">←</button><button
+                            onclick="scrollSlider('track-beverages',1)">→</button></div>
+                </div>
+
+                <!-- PIZZA -->
+                <div class="menu-panel" id="panel-pizza">
+                    <div class="slider-track" id="track-pizza">
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?auto=format&fit=crop&w=400&q=80"
+                                    alt="Margherita Pizza" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Margherita Pizza</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80"
+                                    alt="Sun Dried-Tomato Margherita" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Sun Dried-Tomato Margherita</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80"
+                                    alt="Bhuna Mushroom Pizza" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Bhuna Mushroom Pizza</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80"
+                                    alt="Pesto Mushroom Pizza" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Pesto Mushroom Pizza</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80"
+                                    alt="Cheese Corn Pizza" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Cheese Corn Pizza</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=400&q=80"
+                                    alt="Paneer Tikka Pizza" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Paneer Tikka Pizza</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80"
+                                    alt="World Of Veggies Pizza" loading="lazy"></div>
+                            <div class="info">
+                                <h4>World Of Veggies Pizza</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80"
+                                    alt="Basil Pesto Pizza" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Basil Pesto Pizza</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=400&q=80"
+                                    alt="Tandoori Paneer Pizza" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Tandoori Paneer Pizza</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80"
+                                    alt="OTC Pizza" loading="lazy"></div>
+                            <div class="info">
+                                <h4>OTC Pizza</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80"
+                                    alt="Onion OTC Pizza" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Onion OTC Pizza</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80"
+                                    alt="Corn Cheese Pizza" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Corn Cheese Pizza</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-nav"><button onclick="scrollSlider('track-pizza',-1)">←</button><button
+                            onclick="scrollSlider('track-pizza',1)">→</button></div>
+                </div>
+
+                <!-- PASTA -->
+                <div class="menu-panel" id="panel-pasta">
+                    <div class="slider-track" id="track-pasta">
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=400&q=80"
+                                    alt="Pink Sauce Pasta" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Pink Sauce Pasta ⭐</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=400&q=80"
+                                    alt="Alfredo White Sauce Pasta" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Alfredo White Sauce Pasta</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=400&q=80"
+                                    alt="Arrabiata Pasta" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Arrabiata Pasta</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=400&q=80"
+                                    alt="Spaghetti Aglio-e-Olio" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Spaghetti Aglio-e-Olio</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=400&q=80"
+                                    alt="Basil Pesto Pasta" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Basil Pesto Pasta</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=400&q=80"
+                                    alt="Pink Sauce Baked Pasta" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Pink Sauce Baked Pasta</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=400&q=80"
+                                    alt="Stuffed Cheesy Shells" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Stuffed Cheesy Shells (Baked)</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=400&q=80"
+                                    alt="Lasagna" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Lasagna</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=400&q=80"
+                                    alt="Mac N Cheese" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Mac N Cheese</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-nav"><button onclick="scrollSlider('track-pasta',-1)">←</button><button
+                            onclick="scrollSlider('track-pasta',1)">→</button></div>
+                </div>
+
+                <!-- CHINESE -->
+                <div class="menu-panel" id="panel-chinese">
+                    <div class="slider-track" id="track-chinese">
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1518013006304-414d640248c8?auto=format&fit=crop&w=400&q=80"
+                                    alt="Chilli Potato" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Chilli Potato</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1518013006304-414d640248c8?auto=format&fit=crop&w=400&q=80"
+                                    alt="Honey Chilli Potato" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Honey Chilli Potato</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=400&q=80"
+                                    alt="Crispy Corn" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Crispy Corn</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=400&q=80"
+                                    alt="Cigar Roll" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Cigar Roll</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=400&q=80"
+                                    alt="Manchurian Dry" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Manchurian Dry</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=400&q=80"
+                                    alt="Manchurian Gravy" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Manchurian Gravy</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=400&q=80"
+                                    alt="Regular Hakka Noodles" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Regular Hakka Noodles</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=400&q=80"
+                                    alt="Schezwan Noodles" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Schezwan Noodles</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=400&q=80"
+                                    alt="Hot Chilli Garlic Noodles" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Hot Chilli Garlic Noodles</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=400&q=80"
+                                    alt="Manchurian With Noodle" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Manchurian With Noodle</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=400&q=80"
+                                    alt="Chowmein" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Chowmein</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=400&q=80"
+                                    alt="Regular Fried Rice" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Regular Fried Rice</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=400&q=80"
+                                    alt="Schezwan Fried Rice" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Schezwan Fried Rice</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=400&q=80"
+                                    alt="Hot Chilli Garlic Fried Rice" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Hot Chilli Garlic Fried Rice</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=400&q=80"
+                                    alt="Chilli Paneer" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Chilli Paneer</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-nav"><button onclick="scrollSlider('track-chinese',-1)">←</button><button
+                            onclick="scrollSlider('track-chinese',1)">→</button></div>
+                </div>
+
+                <!-- INDIAN -->
+                <div class="menu-panel" id="panel-indian">
+                    <div class="slider-track" id="track-indian">
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=400&q=80"
+                                    alt="Kadai Paneer" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Kadai Paneer</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=400&q=80"
+                                    alt="Paneer Lababdar" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Paneer Lababdar</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=400&q=80"
+                                    alt="Paneer do Pyaaz" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Paneer do Pyaaz</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=400&q=80"
+                                    alt="Dal Tadka" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Dal Tadka</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=400&q=80"
+                                    alt="Dal Fry" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Dal Fry</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=400&q=80"
+                                    alt="Mix Veg" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Mix Veg</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=400&q=80"
+                                    alt="Veg Pulav" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Veg Pulav</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=400&q=80"
+                                    alt="Tawa Roti" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Tawa Roti</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=400&q=80"
+                                    alt="Tawa Butter Roti" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Tawa Butter Roti</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80"
+                                    alt="Boondi Raita" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Boondi Raita</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80"
+                                    alt="Mix Veg Raita" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Mix Veg Raita</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-nav"><button onclick="scrollSlider('track-indian',-1)">←</button><button
+                            onclick="scrollSlider('track-indian',1)">→</button></div>
+                </div>
+
+                <!-- SNACKS & BITES -->
+                <div class="menu-panel" id="panel-snacks">
+                    <div class="slider-track" id="track-snacks">
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=400&q=80"
+                                    alt="Falafel Sandwich" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Falafel Sandwich</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=400&q=80"
+                                    alt="Veg Grilled Sandwich" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Veg Grilled Sandwich</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=400&q=80"
+                                    alt="Grilled Mushroom Sandwich" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Grilled Mushroom Sandwich</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=400&q=80"
+                                    alt="Paneer Tandoori Sandwich" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Paneer Tandoori Sandwich</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=400&q=80"
+                                    alt="12 Inch Sub" loading="lazy"></div>
+                            <div class="info">
+                                <h4>12 Inch Sub</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=400&q=80"
+                                    alt="Peri Peri Cottage Cheese Sub" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Peri Peri Cottage Cheese Sub</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1626700051175-6518c4793fdf?auto=format&fit=crop&w=400&q=80"
+                                    alt="Falafel &amp; Hummus Wrap" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Falafel &amp; Hummus Wrap</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1626700051175-6518c4793fdf?auto=format&fit=crop&w=400&q=80"
+                                    alt="Kathi Roll" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Kathi Roll</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1626700051175-6518c4793fdf?auto=format&fit=crop&w=400&q=80"
+                                    alt="Veggies Wrap" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Veggies Wrap</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1626700051175-6518c4793fdf?auto=format&fit=crop&w=400&q=80"
+                                    alt="Paneer Wrap" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Paneer Wrap</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80"
+                                    alt="Cottage Cheese Burger" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Cottage Cheese Burger</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80"
+                                    alt="4 Mini Burgers" loading="lazy"></div>
+                            <div class="info">
+                                <h4>4 Mini Burgers</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80"
+                                    alt="Aloo Tikki Burger" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Aloo Tikki Burger</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=80"
+                                    alt="Paneer Momos" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Paneer Momos</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=80"
+                                    alt="Dimsum" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Dimsum</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=80"
+                                    alt="Broccoli Dimsum" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Broccoli &amp; Chestnut Dimsum</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=400&q=80"
+                                    alt="Paneer Pops" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Paneer Pops</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=400&q=80"
+                                    alt="Vada Pav" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Vada Pav</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=400&q=80"
+                                    alt="Garlic Breads" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Garlic Breads</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=400&q=80"
+                                    alt="French Fries" loading="lazy"></div>
+                            <div class="info">
+                                <h4>French Fries</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=400&q=80"
+                                    alt="Wedges" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Wedges</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=400&q=80"
+                                    alt="OTC Garlic Bread" loading="lazy"></div>
+                            <div class="info">
+                                <h4>OTC Garlic Bread</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=400&q=80"
+                                    alt="Mushroom Bruschetta" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Mushroom Bruschetta</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=400&q=80"
+                                    alt="Tomato Olives Bruschetta" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Tomato Olives Bruschetta</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=400&q=80"
+                                    alt="Bruschetta Toastada" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Bruschetta Toastada Crostini</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1547592165-e1d17f57655c?auto=format&fit=crop&w=400&q=80"
+                                    alt="Manchow Soup" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Manchow Soup</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1547592165-e1d17f57655c?auto=format&fit=crop&w=400&q=80"
+                                    alt="Hot &amp; Sour Soup" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Hot &amp; Sour Soup</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1547592165-e1d17f57655c?auto=format&fit=crop&w=400&q=80"
+                                    alt="Lemon Coriander Soup" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Lemon Coriander Soup</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1547592165-e1d17f57655c?auto=format&fit=crop&w=400&q=80"
+                                    alt="Cream Of Mushroom" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Cream Of Mushroom</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80"
+                                    alt="Vegetable Sauté" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Vegetable Sauté</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80"
+                                    alt="Cottage Cheese Sauté" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Cottage Cheese &amp; Veg Sauté</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80"
+                                    alt="Cottage Cheese Steak" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Peri Peri Cottage Cheese Steak</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-nav"><button onclick="scrollSlider('track-snacks',-1)">←</button><button
+                            onclick="scrollSlider('track-snacks',1)">→</button></div>
+                </div>
+
+                <!-- DESSERTS -->
+                <div class="menu-panel" id="panel-desserts">
+                    <div class="slider-track" id="track-desserts">
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=400&q=80"
+                                    alt="Nutella Brownie" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Choco Brownie with Nutella &amp; Hazelnut</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=400&q=80"
+                                    alt="Brownie Chocolate" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Brownie with Chocolate</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=400&q=80"
+                                    alt="Cookies" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Cookies</h4>
+                            </div>
+                        </div>
+                        <div class="menu-card">
+                            <div class="thumb"><img
+                                    src="https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=400&q=80"
+                                    alt="Muffin" loading="lazy"></div>
+                            <div class="info">
+                                <h4>Muffin</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-nav"><button onclick="scrollSlider('track-desserts',-1)">←</button><button
+                            onclick="scrollSlider('track-desserts',1)">→</button></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAVOURITES ===== -->
+    <section id="favourites">
+        <div class="container">
+            <div class="section-head">
+                <div class="eyebrow">Our Special</div>
+                <h2>Customer Favourites</h2>
+            </div>
+            <div class="fav-grid">
+                <div class="fav-card"><span class="ribbon">Bestseller</span>
+                    <div class="thumb"><img
+                            src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=400&q=80"
+                            alt="Virgin Mojito" loading="lazy"></div>
+                    <div class="info">
+                        <h4>Virgin Mojito</h4>
+                    </div>
+                </div>
+                <div class="fav-card"><span class="ribbon">Bestseller</span>
+                    <div class="thumb"><img
+                            src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=400&q=80"
+                            alt="Pink Sauce Pasta" loading="lazy"></div>
+                    <div class="info">
+                        <h4>Pink Sauce Pasta</h4>
+                    </div>
+                </div>
+                <div class="fav-card"><span class="ribbon">Must Try</span>
+                    <div class="thumb"><img
+                            src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80"
+                            alt="Nutella Frappe" loading="lazy"></div>
+                    <div class="info">
+                        <h4>Nutella Frappe</h4>
+                    </div>
+                </div>
+                <div class="fav-card"><span class="ribbon">Popular</span>
+                    <div class="thumb"><img
+                            src="https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?auto=format&fit=crop&w=400&q=80"
+                            alt="Margherita Pizza" loading="lazy"></div>
+                    <div class="info">
+                        <h4>Margherita Pizza</h4>
+                    </div>
+                </div>
+                <div class="fav-card"><span class="ribbon">Sweet Tooth</span>
+                    <div class="thumb"><img
+                            src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=400&q=80"
+                            alt="Choco Brownie with Nutella" loading="lazy"></div>
+                    <div class="info">
+                        <h4>Choco Brownie with Nutella</h4>
+                    </div>
+                </div>
+                <div class="fav-card"><span class="ribbon">Fan Favourite</span>
+                    <div class="thumb"><img
+                            src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80"
+                            alt="Biscoff Thick Shake" loading="lazy"></div>
+                    <div class="info">
+                        <h4>Biscoff Thick Shake</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section class="section-alt" id="gallery">
+        <div class="container">
+            <div class="section-head">
+                <div class="eyebrow">A Glimpse Inside</div>
+                <h2>Gallery</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="g-item tall"><img src="assets/home.jpeg" alt="Cafe interior"></div>
+                <div class="g-item"><img src="assets/about.png" alt="Cafe"></div>
+                <div class="g-item wide"><img src="assets/g1.png" alt="Cafe"></div>
+                <div class="g-item"><img src="assets/g5.webp" alt="Cafe"></div>
+                <div class="g-item"><img src="assets/g6.webp" alt="Cafe"></div>
+                <div class="g-item tall"><img src="assets/g4.png" alt="Cafe"></div>
+                <div class="g-item wide"><img src="assets/g8.webp" alt="Cafe"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact">
+        <div class="container contact-grid">
+            <div class="contact-info">
+                <div class="eyebrow" style="justify-content:flex-start;">Get In Touch</div>
+                <h2>Visit Us or Reserve a Table</h2>
+                <p>Drop by for a cup, or reach out to reserve your table in advance. We'd love to have you at Arabicana.
+                </p>
+                <ul class="info-list">
+                    <li>
+                        <div class="ic">📍</div>
+                        <div><strong>Location</strong><span>1Plot no 91/43, Patel Marg, Mansarovar Sector 7, Sector 9,
+                                Mansarovar, Jaipur, Rajasthan</span></div>
+                    </li>
+                    <li>
+                        <div class="ic">📞</div>
+                        <div><strong>Phone</strong><a href="tel:+919876543210">+91 97847 33160</a></div>
+                    </li>
+
+                    <li>
+                        <div class="ic">🕒</div>
+                        <div><strong>Hours</strong><span>Mon – Sun, 11:00 AM – 11:00 PM</span></div>
+                    </li>
+                </ul>
+                <div class="socials">
+                    <a href="https://www.instagram.com/arabicanaindia/" target="_blank" rel="noopener" title="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+
+                    <a href="https://wa.me/919784733160" target="_blank" rel="noopener" title="WhatsApp">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display:block;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.456L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.97C16.579 1.966 14.12 .94 11.66.941c-5.437 0-9.863 4.373-9.867 9.801-.002 1.83.477 3.62 1.39 5.2l-.993 3.628 3.857-.976zm11.366-6.18c-.282-.14-.596-.33-1.085-.542-.483-.21-.775-.316-.94-.316-.212 0-.41.11-.59.336l-.37.466c-.167.21-.366.31-.598.31s-.49-.074-.775-.224c-.286-.15-.658-.396-1.117-.74-.46-.342-.816-.692-1.07-1.05-.253-.356-.37-.624-.352-.803.018-.18.125-.333.32-.464.195-.13.398-.316.608-.553.21-.237.283-.418.22-.544-.06-.127-.58-1.393-.81-1.95-.23-.556-.477-.478-.71-.478h-.572c-.22 0-.462.062-.727.185-.265.123-.62.383-1.066.78s-.863 1.054-.863 2.015c0 1.298.924 2.502 1.05 2.673.125.17 2.65 4.095 6.42 5.727 3.77 1.632 3.77 1.088 4.453 1.025.683-.063 2.2-.9 2.51-1.77.31-.87.31-1.617.217-1.77-.093-.153-.34-.246-.622-.387z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="map-box">
+                <iframe
+                    src="https://www.google.com/maps?q=Plot no 91/43, Patel Marg, Mansarovar Sector 7, Sector 9, Mansarovar, Jaipur, Rajasthan 302020&output=embed"
+                    loading="lazy" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container footer-wrap">
+            <div class="brand" style="display:flex;align-items:center;gap:10px;">
+                <img src="assets/logo.png" alt="logo" style="height:32px;width:32px;border-radius:50%;">
+                <div class="brand-text">
+                    <div class="name">Arabicana Cafe</div>
+                </div>
+            </div>
+            <p>© 2026 Arabicana Cafe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu tab switching
+        const tabs = document.querySelectorAll('.menu-tab');
+        const panels = document.querySelectorAll('.menu-panel');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Slider scroll
+        function scrollSlider(id, dir) {
+            const track = document.getElementById(id);
+            track.scrollBy({ left: dir * 260, behavior: 'smooth' });
+        }
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(sec => {
+                const top = sec.offsetTop - 140;
+                if (window.scrollY >= top) current = sec.getAttribute('id');
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+            });
+        });
+
+        // Unique Food Image Mapping (Curated High-Quality Food/Beverage Unsplash Photos)
+        const imageMap = {
+            // Hot Coffee
+            "Americano": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=400&q=80",
+            "Cappuccino": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=400&q=80",
+            "Café Latte": "https://images.unsplash.com/photo-1570968915860-54d5c301fc9f?auto=format&fit=crop&w=400&q=80",
+            "Hot Mocha": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80",
+            "Flat White": "https://images.unsplash.com/photo-1577968897966-3d4325b36b61?auto=format&fit=crop&w=400&q=80",
+            "House Of Cappuccino": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=400&q=80",
+            "Espresso Shot Single": "https://images.unsplash.com/photo-1510972527409-cef7e2b76b2b?auto=format&fit=crop&w=400&q=80",
+            "Espresso Double": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=400&q=80",
+            "Affogato": "https://images.unsplash.com/photo-1594911774802-8822a7079db1?auto=format&fit=crop&w=400&q=80",
+            "Nutella Affogato": "https://images.unsplash.com/photo-1592916239106-cfb045503178?auto=format&fit=crop&w=400&q=80",
+
+            // Iced Coffee
+            "Iced Americano": "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=400&q=80",
+            "Iced Cappuccino": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=400&q=80",
+            "Iced Mocha": "https://images.unsplash.com/photo-1530373030535-f3dfc39f6022?auto=format&fit=crop&w=400&q=80",
+            "Condensed Iced Latte": "https://images.unsplash.com/photo-1553909489-cd47e0907980?auto=format&fit=crop&w=400&q=80",
+            "Classic Iced Café": "https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=400&q=80",
+            "Iced Café Latte Flavoured": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80",
+            "Espresso Tonic": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=400&q=80",
+            "Espresso Cranberry": "https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=400&q=80",
+
+            // Frappe & Matcha
+            "Classic Frappe": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80",
+            "Choco Frappe": "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80",
+            "Mocha Frappe": "https://images.unsplash.com/photo-1530373030535-f3dfc39f6022?auto=format&fit=crop&w=400&q=80",
+            "Nutella Frappe": "https://images.unsplash.com/photo-1592916239106-cfb045503178?auto=format&fit=crop&w=400&q=80",
+            "Biscoff Frappe": "https://images.unsplash.com/photo-1588746853740-bd35d1ff44b8?auto=format&fit=crop&w=400&q=80",
+            "Brownie Frappe": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=400&q=80",
+            "Dark Chocolate Frappe": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=80",
+            "Caramel Creamy Frappe": "https://images.unsplash.com/photo-1541658016709-82535e94bc69?auto=format&fit=crop&w=400&q=80",
+            "Double Choco Chip Frappe": "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80",
+            "Irish Frappe": "https://images.unsplash.com/photo-1530373030535-f3dfc39f6022?auto=format&fit=crop&w=400&q=80",
+            "Nutty Milano Frappe": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80",
+            "Classic Matcha": "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=400&q=80",
+            "Strawberry Matcha": "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=400&q=80",
+            "Mango Matcha": "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=400&q=80",
+            "Matcha Cappuccino": "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&w=400&q=80",
+
+            // Beverages
+            "Virgin Mojito ⭐": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=400&q=80",
+            "Cranberry Mojito": "https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=400&q=80",
+            "Strawberry Mojito": "https://images.unsplash.com/photo-1575506041695-1f9f237eb644?auto=format&fit=crop&w=400&q=80",
+            "Blueberry Mojito": "https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=400&q=80",
+            "Watermelon Mojito": "https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&w=400&q=80",
+            "Blueberry Ice Tea": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=400&q=80",
+            "Lemon Ice Tea": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=400&q=80",
+            "Lemon Mint Ice Tea": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=400&q=80",
+            "Peach Ice Tea": "https://images.unsplash.com/photo-1497534446932-c925b458314e?auto=format&fit=crop&w=400&q=80",
+            "Strawberry Ice Tea": "https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&w=400&q=80",
+            "Watermelon Ice Tea": "https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=400&q=80",
+            "Classic Hot Chocolate": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=400&q=80",
+            "Iced Cold Chocolate": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=400&q=80",
+            "Ferrero Rocher Hot Choco": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=400&q=80",
+            "Nutella Hot Chocolate": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=400&q=80",
+            "Belgian Chocolate Shake": "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=400&q=80",
+            "Oreo Thick Shake": "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=400&q=80",
+            "Nutella Thick Shake": "https://images.unsplash.com/photo-1600718051052-a5e2f070f7cf?auto=format&fit=crop&w=400&q=80",
+            "Biscoff Thick Shake": "https://images.unsplash.com/photo-1588746853740-bd35d1ff44b8?auto=format&fit=crop&w=400&q=80",
+            "Ferrero Rocher Shake": "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?auto=format&fit=crop&w=400&q=80",
+            "Kit Kat Thick Shake": "https://images.unsplash.com/photo-1553787499-6f9133860278?auto=format&fit=crop&w=400&q=80",
+            "Double Brownie Shake": "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=400&q=80",
+            "Alphonso Mango Shake": "https://images.unsplash.com/photo-1553156280-374fa8892cb6?auto=format&fit=crop&w=400&q=80",
+            "Fresh Lime Soda": "https://images.unsplash.com/photo-1556881286-fc6915169721?auto=format&fit=crop&w=400&q=80",
+            "Red Bull": "https://images.unsplash.com/photo-1622543953490-0b70039a4ac5?auto=format&fit=crop&w=400&q=80",
+
+            // Pizza
+            "Margherita Pizza": "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?auto=format&fit=crop&w=400&q=80",
+            "Sun Dried-Tomato Margherita": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=400&q=80",
+            "Bhuna Mushroom Pizza": "https://images.unsplash.com/photo-1571066811602-71683a3f680d?auto=format&fit=crop&w=400&q=80",
+            "Pesto Mushroom Pizza": "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=400&q=80",
+            "Cheese Corn Pizza": "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&w=400&q=80",
+            "Paneer Tikka Pizza": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80",
+            "World Of Veggies Pizza": "https://images.unsplash.com/photo-1590947132387-155cc02f3212?auto=format&fit=crop&w=400&q=80",
+            "Basil Pesto Pizza": "https://images.unsplash.com/photo-1458641477482-774685fa8a97?auto=format&fit=crop&w=400&q=80",
+            "Tandoori Paneer Pizza": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=400&q=80",
+            "OTC Pizza": "https://images.unsplash.com/photo-1511018556340-d16986a1c194?auto=format&fit=crop&w=400&q=80",
+            "Onion OTC Pizza": "https://images.unsplash.com/photo-1594009478135-5fa8c2429c91?auto=format&fit=crop&w=400&q=80",
+            "Corn Cheese Pizza": "https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=400&q=80",
+
+            // Pasta
+            "Pink Sauce Pasta ⭐": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=400&q=80",
+            "Alfredo White Sauce Pasta": "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=400&q=80",
+            "Arrabiata Pasta": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=400&q=80",
+            "Spaghetti Aglio-e-Olio": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=400&q=80",
+            "Basil Pesto Pasta": "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=400&q=80",
+            "Pink Sauce Baked Pasta": "https://images.unsplash.com/photo-1548869206-93b036288d7e?auto=format&fit=crop&w=400&q=80",
+            "Stuffed Cheesy Shells (Baked)": "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=400&q=80",
+            "Lasagna": "https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=400&q=80",
+            "Mac N Cheese": "https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=400&q=80",
+
+            // Chinese
+            "Chilli Potato": "https://images.unsplash.com/photo-1518013006304-414d640248c8?auto=format&fit=crop&w=400&q=80",
+            "Honey Chilli Potato": "https://images.unsplash.com/photo-1518013006304-414d640248c8?auto=format&fit=crop&w=400&q=80",
+            "Crispy Corn": "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=400&q=80",
+            "Cigar Roll": "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&w=400&q=80",
+            "Manchurian Dry": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=80",
+            "Manchurian Gravy": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=400&q=80",
+            "Regular Hakka Noodles": "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=400&q=80",
+            "Schezwan Noodles": "https://images.unsplash.com/photo-1612966608967-302fc54ae58f?auto=format&fit=crop&w=400&q=80",
+            "Hot Chilli Garlic Noodles": "https://images.unsplash.com/photo-1526318896980-cf78c088247c?auto=format&fit=crop&w=400&q=80",
+            "Manchurian With Noodle": "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=400&q=80",
+            "Chowmein": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80",
+            "Regular Fried Rice": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=400&q=80",
+            "Schezwan Fried Rice": "https://images.unsplash.com/photo-1623595150989-130d1ef76fe3?auto=format&fit=crop&w=400&q=80",
+            "Hot Chilli Garlic Fried Rice": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=400&q=80",
+            "Chilli Paneer": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=400&q=80",
+
+            // Indian
+            "Kadai Paneer": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=400&q=80",
+            "Paneer Lababdar": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=400&q=80",
+            "Paneer do Pyaaz": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=400&q=80",
+            "Dal Tadka": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=400&q=80",
+            "Dal Fry": "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=400&q=80",
+            "Mix Veg": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=400&q=80",
+            "Veg Pulav": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=400&q=80",
+            "Tawa Roti": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=400&q=80",
+            "Tawa Butter Roti": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=400&q=80",
+            "Boondi Raita": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80",
+            "Mix Veg Raita": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80",
+
+            // Snacks & Bites
+            "Falafel Sandwich": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=400&q=80",
+            "Veg Grilled Sandwich": "https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=400&q=80",
+            "Grilled Mushroom Sandwich": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=400&q=80",
+            "Paneer Tandoori Sandwich": "https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&w=400&q=80",
+            "12 Inch Sub": "https://images.unsplash.com/photo-1539252554453-80ab65ce3586?auto=format&fit=crop&w=400&q=80",
+            "Peri Peri Cottage Cheese Sub": "https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=400&q=80",
+            "Falafel & Hummus Wrap": "https://images.unsplash.com/photo-1626700051175-6518c4793fdf?auto=format&fit=crop&w=400&q=80",
+            "Kathi Roll": "https://images.unsplash.com/photo-1626700051175-6518c4793fdf?auto=format&fit=crop&w=400&q=80",
+            "Veggies Wrap": "https://images.unsplash.com/photo-1626700051175-6518c4793fdf?auto=format&fit=crop&w=400&q=80",
+            "Paneer Wrap": "https://images.unsplash.com/photo-1626700051175-6518c4793fdf?auto=format&fit=crop&w=400&q=80",
+            "Cottage Cheese Burger": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80",
+            "4 Mini Burgers": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80",
+            "Aloo Tikki Burger": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=400&q=80",
+            "Paneer Momos": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=80",
+            "Dimsum": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=80",
+            "Broccoli & Chestnut Dimsum": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=80",
+            "Paneer Pops": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=400&q=80",
+            "Vada Pav": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=400&q=80",
+            "Garlic Breads": "https://images.unsplash.com/photo-1544982503-9f984c14501a?auto=format&fit=crop&w=400&q=80",
+            "French Fries": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=400&q=80",
+            "Wedges": "https://images.unsplash.com/photo-1576107232684-1279f390859f?auto=format&fit=crop&w=400&q=80",
+            "OTC Garlic Bread": "https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?auto=format&fit=crop&w=400&q=80",
+            "Mushroom Bruschetta": "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?auto=format&fit=crop&w=400&q=80",
+            "Tomato Olives Bruschetta": "https://images.unsplash.com/photo-1572449043416-55f4685c9bb7?auto=format&fit=crop&w=400&q=80",
+            "Bruschetta Toastada Crostini": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80",
+            "Manchow Soup": "https://images.unsplash.com/photo-1547592165-e1d17f57655c?auto=format&fit=crop&w=400&q=80",
+            "Hot & Sour Soup": "https://images.unsplash.com/photo-1607532941433-304659e8198a?auto=format&fit=crop&w=400&q=80",
+            "Lemon Coriander Soup": "https://images.unsplash.com/photo-1594756202469-9ff9799b2e4e?auto=format&fit=crop&w=400&q=80",
+            "Cream Of Mushroom": "https://images.unsplash.com/photo-1547592165-e1d17f57655c?auto=format&fit=crop&w=400&q=80",
+            "Vegetable Sauté": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80",
+            "Cottage Cheese & Veg Sauté": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80",
+            "Peri Peri Cottage Cheese Steak": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80",
+
+            // Desserts
+            "Choco Brownie with Nutella & Hazelnut": "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=400&q=80",
+            "Brownie with Chocolate": "https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=400&q=80",
+            "Cookies": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=400&q=80",
+            "Muffin": "https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=400&q=80"
+        };
+
+        // Update all menu card and fav card images programmatically on load to ensure different, correct images!
+        document.addEventListener("DOMContentLoaded", () => {
+            // Update menu-cards
+            document.querySelectorAll('.menu-card').forEach(card => {
+                const nameNode = card.querySelector('h4');
+                const imgNode = card.querySelector('.thumb img');
+                if (nameNode && imgNode) {
+                    const itemName = nameNode.textContent.trim();
+                    if (imageMap[itemName]) {
+                        imgNode.src = imageMap[itemName];
+                        imgNode.alt = itemName;
+                    }
+                }
+            });
+
+            // Update fav-cards
+            document.querySelectorAll('.fav-card').forEach(card => {
+                const nameNode = card.querySelector('h4');
+                const imgNode = card.querySelector('.thumb img');
+                if (nameNode && imgNode) {
+                    const itemName = nameNode.textContent.trim();
+                    if (imageMap[itemName]) {
+                        imgNode.src = imageMap[itemName];
+                        imgNode.alt = itemName;
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
